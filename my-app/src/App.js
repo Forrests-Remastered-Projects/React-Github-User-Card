@@ -6,6 +6,7 @@ class App extends React.Component {
     super();
     this.state = {
       user: {},
+      followers: []
     };
   }
 
@@ -14,6 +15,9 @@ componentDidMount() {
   fetch('http://api.github.com/users/forrestdarabian')
     .then(res => res.json())
     .then(data => this.setState({ user: data }));
+    fetch('http://api.github.com/users/forrestdarabian/followers')
+    .then(res => res.json())
+    .then(data => this.setState({ followers: data }));
 }
 
 componentDidUpdate() {
@@ -34,6 +38,8 @@ function UserCard(props) {
   <div>
     <h2>{props.user.login}</h2>
     <p>{props.user.location}</p>
+    <p>{props.user.url}</p>
+
   </div>
   );
 }
