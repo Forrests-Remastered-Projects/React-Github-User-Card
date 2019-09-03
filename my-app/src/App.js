@@ -37,12 +37,15 @@ function UserCard(props) {
   return (
   <div>
     <h2>{props.user.login}</h2>
-    <p>{props.user.location}</p>
-    <p>{props.user.url}</p>
-    <div>
+    <img src={props.user.avatar_url} />
+    <p>Hi, my name is {props.user.name}</p>
+    <p>I live in {props.user.location}</p>
+    <p>I am a {props.user.bio}</p>
+    <div class="follow">
+      My followers on Github are listed below <br/> 
+      <br/>
       {props.followers.map(follower => (<div key={follower.id}>{follower.login}</div>))}
     </div>
-
   </div>
   );
 }
