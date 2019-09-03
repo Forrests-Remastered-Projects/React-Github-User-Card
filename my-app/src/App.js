@@ -27,7 +27,7 @@ componentDidUpdate() {
   render() {
     return (
       <div className="App">
-        <UserCard user={this.state.user} />
+        <UserCard user={this.state.user} followers={this.state.followers} />
       </div>
     );
   }
@@ -39,6 +39,9 @@ function UserCard(props) {
     <h2>{props.user.login}</h2>
     <p>{props.user.location}</p>
     <p>{props.user.url}</p>
+    <div>
+      {props.followers.map(follower => (<div key={follower.id}>{follower.login}</div>))}
+    </div>
 
   </div>
   );
